@@ -144,8 +144,8 @@ def kickdrift(parameters, grids, fieldY, harmpot, potc, potnc):
                 hasitcol,Rdt,D,toeliminate,v3out,v4out,v3in,v4in = col.collisionscnc(parameters,dt,fieldY,hasitcol,h,idxflat,vidxflat)
                 fieldY.fieldc*=np.exp(-Rdt)
                 #Addition of additive noise
-                #zeta=additivenoise(parameters,fieldY,D)
-                #fieldY.fieldc+=-1.0j*np.sqrt(dt)*zeta
+                zeta=additivenoise(parameters,fieldY,D)
+                fieldY.fieldc+=-1.0j*np.sqrt(dt)*zeta
             else:
                 toeliminate,v3out,v4out,v3in,v4in=np.full(len(fieldY.fieldnc[1]), False), np.zeros(len(fieldY.fieldnc[1])), np.zeros(len(fieldY.fieldnc[1])), np.zeros(len(fieldY.fieldnc[1])), np.zeros(len(fieldY.fieldnc[1]))
             #Incoherent-Incoherent collision
